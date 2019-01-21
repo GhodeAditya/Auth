@@ -1,0 +1,23 @@
+<!-- <h1>Home Page</h1>
+<p>Welcome {{name.page}} </p>
+<ul>
+  <li><a (click)= "logout()">LogOut</a></li>
+</ul> -->
+
+
+<nav class="navbar static-top">
+  <div class="container">
+  
+     <p *ngIf="_dataService.isLoggedIn()" class="tittle">  
+       Welcome {{_dataService.getCurrentUser().name}}
+     </p>
+      <a *ngIf="_dataService.isLoggedIn()" class="logout" (click)="logout()">Logout</a>
+  </div>
+</nav>
+<ul>
+  <li *ngIf="_dataService.isLoggedIn()"> <a routerLink="/home/orders">orders</a></li>
+  <li *ngIf="!_dataService.isLoggedIn()"><a routerLink="">logIn</a></li>
+</ul>
+<div *ngIf="_dataService.isLoggedIn()">
+<router-outlet></router-outlet>
+</div>

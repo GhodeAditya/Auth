@@ -1,0 +1,33 @@
+<div class="container">
+
+ <form #submitForm="ngForm" (ngSubmit)="submit(submitForm.form, $event)" class="form-signin" enctype="multipart/form-data" novalidate>
+
+    <input type="text" class="form-control" placeholder="Product tittle" required ngModel name="name" #name="ngModel"
+      required autofocus>
+    
+    <input type="number" class="form-control" placeholder="Price" ngModel name="price" #price="ngModel"
+      >
+     
+    <!-- <p-fileUpload name="myfile[]" accept="image/*" url="http://localhost:3000/api/upload" (onUpload)="myUploader($event)" maxFileSize="1000000" ></p-fileUpload> -->
+
+    <input type="file" class="form-control" (change)="onFileChanged($event)" placeholder="file Upload" ngModel name="recfile" #file="ngModel">
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit"> Submit </button>
+    <div></div>
+    <!-- <div *ngIf="!loginBollen" class="alert alert-danger">
+               invalid username or password
+          </div>   -->
+
+  </form> 
+<!-- 
+  <input 
+  style="display: none" 
+  type="file" (change)="onFileChanged($event)" 
+  #fileInput>
+<button (click)="fileInput.click()">Select File</button> -->
+
+</div>
+<!-- 
+<form action="http://localhost:3000/api/upload" method="post" enctype="multipart/form-data">
+  <input type="file" name="avatar" />
+</form> -->

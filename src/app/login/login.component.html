@@ -1,0 +1,51 @@
+<div class="container login-container">
+  <div class="row">
+      <div class="col-sm-6 col-md-4 offset-4">
+          <h1 class="text-center login-title">Sign in</h1>
+          <div class="account-wall">
+              <!-- <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+                  alt=""> -->
+              <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm.form)" class="form-signin" novalidate>
+             
+                <input type="email" class="form-control" placeholder="Email" required
+                ngModel
+                name="email"
+                #email="ngModel" 
+                required 
+                autofocus>
+<!-- 
+                <div *ngIf="username.touched && username.errors">
+                        <div class="alert alert-danger" 
+                          *ngIf="username.errors.required">
+                            The Email Name is required
+                      </div>  
+                  </div> -->
+              <input type="password" class="form-control" placeholder="Password"
+              ngModel
+              name="password"
+              #password="ngModel" 
+              required>
+
+              <!-- <div *ngIf="password.touched && password.errors">
+                    <div class="alert alert-danger" 
+                      *ngIf="password.errors.required">
+                        The password is required
+                   </div>  
+
+                </div> -->
+
+              <button  class="btn btn-lg btn-primary btn-block" type="submit">
+                  Sign in</button>           
+                  <div></div>
+               <div *ngIf="!loginBollen" class="alert alert-danger">
+                           invalid username or password
+                      </div>  
+                      <div><a routerLink="/signUp" routerLinkActive="active">Sign Up</a></div>
+                      <div><a routerLink="/admin" routerLinkActive="active">Admin</a></div>
+              </form>
+        
+          </div>
+         
+      </div>
+  </div>
+</div>
