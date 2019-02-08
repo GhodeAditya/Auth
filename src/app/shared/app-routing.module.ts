@@ -8,30 +8,11 @@ import { OrdersComponent } from '../home/orders/orders.component';
 import { AdminComponent } from '../admin/admin.component'
 
 const appRoutes: Routes = [
-  { 
-    path: '', 
-    component: LoginComponent 
-  },
-    { 
-      path: 'signUp',
-      component: SignupComponent 
-    },
-    { 
-      path: 'home',
-       component: HomeComponent, 
-    children: [
-      { 
-        path: 'orders', 
-        component: OrdersComponent,
-         pathMatch: 'full',
-         canActivate:[AuthGuardService]
-      }
-    ]
-  },
-  { 
-    path: 'admin',
-    component: AdminComponent 
-  }    
+  { path: '', component:  HomeComponent },
+  { path: 'signUp', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'orders', component: OrdersComponent, pathMatch: 'full', canActivate:[] },
+  { path: 'admin', component: AdminComponent }    
 ];
 
 

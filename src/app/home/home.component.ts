@@ -9,12 +9,36 @@ import {  AppService } from '../shared/app.service';
 })
 export class HomeComponent implements OnInit {
    name:any;
+   data:any =[];
+   cartData:any =[]; 
+   thmbnailImag:any;
+ 
+   
   constructor(private router: Router, private ActivatedRoute: ActivatedRoute, private _dataService: AppService) { }
 
   ngOnInit() {
+    this.getData();
   }
+
   logout(){
     localStorage.removeItem("token");
-    // this.router.navigate([""]);
   }
+
+  getData(){
+    this._dataService.get(this._dataService.apiurl + "/api/upload")
+    .subscribe(res => {
+      this.data = res;
+      console.log(this.data);
+
+      this.thmbnailImag = "http://localhost:3000/" + this.data[0].filePath;
+    }, (err) => {
+      console.log(err);
+    });
+   }
+   
+   post = {
+    Tittle: "tittle", 
+    isFavorite: true
+   }
+
 }

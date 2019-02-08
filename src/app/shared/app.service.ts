@@ -23,14 +23,11 @@ export class AppService {
   isLoggedIn(){
     let jwtHelper = new JwtHelperService();
     let token = localStorage.getItem("token");
-    if(!token){
-      return false
-    }
+    
+    if(!token) return false
+    if(jwtHelper.isTokenExpired(token)) return false;
    
-   if(jwtHelper.isTokenExpired(token)) return false;
-
-   
-   return true;
+    return true;
   }
   getCurrentUser(){
     let token = localStorage.getItem("token");

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {  AppService } from '../../shared/app.service';
 
 @Component({
   selector: 'app-orders',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
+  
+  @Input("isFavorite") isFavorite: boolean;
 
   constructor() { }
 
   ngOnInit() {
+   //this.isFavorite = true;
   }
-
+  onClick(){
+    this.isFavorite = !this.isFavorite;
+  }
+ 
 }

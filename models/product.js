@@ -3,10 +3,13 @@ const mongoose = require("mongoose");
 
 const Product = mongoose.model("Product", new mongoose.Schema({
     productTittle : {
-        type: "String",
+        type: "String"
     },
     price: {
-        type: "Number",
+        type: "String"
+    },
+    productID:{
+      type: "Number"
     },
     filePath: {
        type: "String"

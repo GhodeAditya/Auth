@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const {Product} = require("../models/product");
 const multer  = require('multer')
-//const upload = multer({ dest: './public/uploads/' })
-
 
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -19,13 +17,12 @@ let storage = multer.diskStorage({
 
 
 router.post("/",  upload.single('recfile'), async(req, res) =>{
-    
-    console.log(req.file);
-
-
+  
    const user = new Product({
        productTittle : req.body.name,
-       price: req.body.price
+       productID: Math.floor(Math.random() * 100), 
+       price: req.body.price,
+       filePath: req.file.path
     });
     const data = await user.save();
     res.send(data);

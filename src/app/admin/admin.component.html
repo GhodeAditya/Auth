@@ -13,11 +13,15 @@
     <input type="file" class="form-control" (change)="onFileChanged($event)" placeholder="file Upload" ngModel name="recfile" #file="ngModel">
 
     <button class="btn btn-lg btn-primary btn-block" type="submit"> Submit </button>
+    <button  type="reset"> Clear </button>
     <div></div>
-    <!-- <div *ngIf="!loginBollen" class="alert alert-danger">
-               invalid username or password
-          </div>   -->
-
+    <div *ngIf="!loginBollen" class="alert alert-danger">
+               unable to save data
+          </div>  
+          <div *ngIf="!dataSaved" class="alert alert-danger">
+            Data saved
+       </div>  
+     <a routerLink="">Home</a>
   </form> 
 <!-- 
   <input 

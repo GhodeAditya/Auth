@@ -22,9 +22,10 @@ export class AdminComponent implements OnInit {
   onFileChanged(e){
     this.selectedFile = e.target.files[0];
   }
+  loginBollen = true;
+  dataSaved = true;
 
   submit(data){
-   
     const formdata: FormData = new FormData();
     formdata.append("recfile", this.selectedFile, this.selectedFile.name);
     formdata.append("name", data.value.name);
@@ -33,7 +34,9 @@ export class AdminComponent implements OnInit {
     this._dataService.post(this._dataService.apiurl + "/api/upload",formdata)
       .subscribe(res => {
         this.data = res;
+        this.dataSaved = false;
       }, (err) => {
+        this.loginBollen = false;
         console.log(err);
       });
   }

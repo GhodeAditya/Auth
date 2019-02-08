@@ -1,23 +1,27 @@
-<!-- <h1>Home Page</h1>
-<p>Welcome {{name.page}} </p>
-<ul>
-  <li><a (click)= "logout()">LogOut</a></li>
-</ul> -->
-
 
 <nav class="navbar static-top">
   <div class="container">
-  
+     
      <p *ngIf="_dataService.isLoggedIn()" class="tittle">  
        Welcome {{_dataService.getCurrentUser().name}}
      </p>
-      <a *ngIf="_dataService.isLoggedIn()" class="logout" (click)="logout()">Logout</a>
+      <li *ngIf="_dataService.isLoggedIn()" class="logout"><a  (click)="logout()">Logout</a></li>
+      <li class="logout" > <a routerLink="/orders">Cart({{cartData.length}})</a></li>
+      <li class="logout" *ngIf="!_dataService.isLoggedIn()"> <a routerLink="/login">LogIn</a></li>
   </div>
 </nav>
-<ul>
-  <li *ngIf="_dataService.isLoggedIn()"> <a routerLink="/home/orders">orders</a></li>
-  <li *ngIf="!_dataService.isLoggedIn()"><a routerLink="">logIn</a></li>
-</ul>
+<div class="container">
+   <h3>Products</h3>
+    <div class="thumbnail" *ngFor="let item of data; let i = index" >
+        <app-orders ></app-orders>
+         <img class="imgBlock" [src]="('http://localhost:3000/'+ item.filePath)" alt="">
+         <p>{{item.productTittle}}</p> 
+         <p>{{item.price}}</p> 
+        
+         <!-- <button  (click)="addCart(item)" class="btn btn-sm btn-primary">Add to Cart</button> -->
+    </div>
+</div>
+
 <div *ngIf="_dataService.isLoggedIn()">
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </div>

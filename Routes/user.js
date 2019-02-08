@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 const _ = require("lodash");
 const bcrypt = require("bcryptjs");
  const {User} = require("../models/user");
@@ -27,8 +26,5 @@ router.post("/", async(req, res) =>{
    await user.save();
   res.send( _.pick(user, ["userName", "email"]));
 });
-
-
-
 
 module.exports = router;
